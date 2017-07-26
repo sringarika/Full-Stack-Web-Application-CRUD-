@@ -24,6 +24,15 @@ public class LibrariesDAOImpl implements LibrariesDAO {
         rest.setPoliceDistrict("SOUTHEASTERN");
         rest.setZipCode("21224");
         restaurants.add(rest);
+        Libraries rest1 = new Libraries();
+        rest1.setId(2);
+        rest1.setName("Central");
+        rest1.setCouncilDistrict(11);
+        rest1.setLocation1("400 cathedral St");
+        rest1.setNeighborhood("Downtown");
+        rest1.setPoliceDistrict("CENTRAL");
+        rest1.setZipCode("21201");
+        restaurants.add(rest1);
     }
 
     public List<Libraries> getList() {

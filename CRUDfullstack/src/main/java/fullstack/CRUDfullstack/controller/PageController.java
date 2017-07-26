@@ -19,5 +19,12 @@ public class PageController {
         mv.addObject("greeting", "Welcome to the application!!");
         return mv;
     }
+    @RequestMapping(value = {"/libraries"})
+    public ModelAndView index1() {
+        ModelAndView mv = new ModelAndView("libraries");
+        mv.addObject("libraries", librariesDAO.getList());
+        //mv.addObject("greeting", "Welcome to the application!!");
+        return mv;
+    }
 
 }
