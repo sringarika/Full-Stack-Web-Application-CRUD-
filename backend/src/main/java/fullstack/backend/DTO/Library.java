@@ -11,7 +11,6 @@ public class Library {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String type;
     private String zipCode;
     private String neighborhood;
     private String councilDistrict;
@@ -101,24 +100,12 @@ public class Library {
     public void setLocation1(String location1) {
         this.location1 = location1;
     }
-    /**
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
-    /**
-     * @param type the type to set
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-        return "Libraries [id=" + id + ", name=" + name + ", type=" + type + ", zipCode=" + zipCode + ", neighborhood="
+        return "Libraries [id=" + id + ", name=" + name + ", zipCode=" + zipCode + ", neighborhood="
                 + neighborhood + ", councilDistrict=" + councilDistrict + ", policeDistrict=" + policeDistrict
                 + ", location1=" + location1 + "]";
     }
