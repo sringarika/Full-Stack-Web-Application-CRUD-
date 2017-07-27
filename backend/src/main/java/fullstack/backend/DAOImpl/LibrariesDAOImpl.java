@@ -3,41 +3,66 @@ package fullstack.backend.DAOImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import fullstack.backend.DAO.LibrariesDAO;
-import fullstack.backend.DTO.Libraries;
+import fullstack.backend.DTO.Library;
 
 @Repository("librariesDAO")
+@Transactional
 public class LibrariesDAOImpl implements LibrariesDAO {
-    private static List<Libraries> restaurants = new ArrayList<Libraries>();
+    @Autowired
+    private SessionFactory session;
     public LibrariesDAOImpl() {
         
     }
-    static {
-        Libraries rest = new Libraries();
-        rest.setId(1);
-        rest.setName("SAUTE");
-        rest.setCouncilDistrict(1);
-        rest.setLocation1("2844 HUDSON ST");
-        rest.setNeighborhood("Canton");
-        rest.setPoliceDistrict("SOUTHEASTERN");
-        rest.setZipCode("21224");
-        restaurants.add(rest);
-        Libraries rest1 = new Libraries();
-        rest1.setId(2);
-        rest1.setName("Central");
-        rest1.setCouncilDistrict(11);
-        rest1.setLocation1("400 cathedral St");
-        rest1.setNeighborhood("Downtown");
-        rest1.setPoliceDistrict("CENTRAL");
-        rest1.setZipCode("21201");
-        restaurants.add(rest1);
+
+    public List<Library> getList() {
+        String selectLibraries = "FROM Library";
+        Query query = session.getCurrentSession().createQuery(selectLibraries);
+        return query.getResultList();
     }
 
-    public List<Libraries> getList() {
-        // TODO Auto-generated method stub
-        return restaurants;
+    @Override
+    public boolean addLibrary(Library library) {
+        try {
+            session.getCurrentSession().persist(library);
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updateLibrary(Library library) {
+        try {
+            session.getCurrentSession().update(library);
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean deleteLibrary(Library library) {
+        try {
+            session.getCurrentSession().delete(library);
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public Library getLibrary(int id) {
+        return session.getCurrentSession().get(Library.class, Integer.valueOf(id));
     }
 
 }

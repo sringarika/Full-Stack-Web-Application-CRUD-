@@ -1,11 +1,20 @@
 package fullstack.backend.DTO;
 
-public class Libraries {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Library {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    private String type;
     private String zipCode;
     private String neighborhood;
-    private int councilDistrict;
+    private String councilDistrict;
     private String policeDistrict;
     private String location1;
     /**
@@ -59,13 +68,13 @@ public class Libraries {
     /**
      * @return the councilDistrict
      */
-    public int getCouncilDistrict() {
+    public String getCouncilDistrict() {
         return councilDistrict;
     }
     /**
      * @param councilDistrict the councilDistrict to set
      */
-    public void setCouncilDistrict(int councilDistrict) {
+    public void setCouncilDistrict(String councilDistrict) {
         this.councilDistrict = councilDistrict;
     }
     /**
@@ -92,5 +101,27 @@ public class Libraries {
     public void setLocation1(String location1) {
         this.location1 = location1;
     }
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "Libraries [id=" + id + ", name=" + name + ", type=" + type + ", zipCode=" + zipCode + ", neighborhood="
+                + neighborhood + ", councilDistrict=" + councilDistrict + ", policeDistrict=" + policeDistrict
+                + ", location1=" + location1 + "]";
+    }
+    
 
 }

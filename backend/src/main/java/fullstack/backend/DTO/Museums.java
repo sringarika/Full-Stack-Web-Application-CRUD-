@@ -1,9 +1,16 @@
 package fullstack.backend.DTO;
 
-public class GroceryStores {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Museums {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String type;
     private String zipCode;
     private String neighborhood;
     private int councilDistrict;
@@ -32,18 +39,6 @@ public class GroceryStores {
      */
     public void setName(String name) {
         this.name = name;
-    }
-    /**
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
-    /**
-     * @param type the type to set
-     */
-    public void setType(String type) {
-        this.type = type;
     }
     /**
      * @return the zipCode
@@ -105,5 +100,15 @@ public class GroceryStores {
     public void setLocation1(String location1) {
         this.location1 = location1;
     }
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "Museums [id=" + id + ", name=" + name + ", zipCode=" + zipCode + ", neighborhood=" + neighborhood
+                + ", councilDistrict=" + councilDistrict + ", policeDistrict=" + policeDistrict + ", location1="
+                + location1 + "]";
+    }
+    
 
 }
